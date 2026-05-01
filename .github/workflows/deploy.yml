@@ -10,20 +10,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to Netlify
+      - name: Package and deploy to Netlify
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          cp Hostels1_Dashboard.html index.html
-          zip deploy.zip index.html
+          mkdir dist
+          cp Hostels1_Dashboard.html dist/index.html
+          cd dist
+          zip -j ../deploy.zip index.html
+          cd ..
           curl -s -X POST \
             -H "Authorization: Bearer $NETLIFY_TOKEN" \
             -H "Content-Type: application/zip" \
             --data-binary @deploy.zip \
             "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID/deploys" \
             -o response.json
+          cat response.json
           STATE=$(jq -r '.state' response.json)
-          ERROR=$(jq -r '.error_message // empty' response.json)
-          echo "State: $STATE"
-          if [ -n "$ERROR" ]; then echo "Error: $ERROR"; exit 1; fi
+          echo "Deploy state: $STATE"
+          if [ "$STATE" = "null" ] || [ -z "$STATE" ]; then exit 1; fi
