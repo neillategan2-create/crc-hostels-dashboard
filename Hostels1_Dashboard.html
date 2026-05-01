@@ -103,7 +103,7 @@
   /* ---- KPI ROW ---- */
   .kpi-row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 16px;
     padding: 32px 40px;
     border-bottom: 1px solid var(--border);
@@ -356,6 +356,7 @@
   .fade-up-3 { animation-delay: 0.15s; }
   .fade-up-4 { animation-delay: 0.20s; }
   .fade-up-5 { animation-delay: 0.25s; }
+  .fade-up-6 { animation-delay: 0.30s; }
   @media (max-width: 900px) {
     .kpi-row { grid-template-columns: repeat(2, 1fr); }
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
@@ -405,6 +406,11 @@
     <div class="kpi-label">Want Membership</div>
     <div class="kpi-number">63</div>
     <div class="kpi-sub">FTVs expressed interest</div>
+  </div>
+  <div class="kpi-card fade-up fade-up-6" style="--card-color: #06b6d4">
+    <div class="kpi-label">Protocols</div>
+    <div class="kpi-number">21</div>
+    <div class="kpi-sub">Prodigal group</div>
   </div>
 </div>
 
@@ -686,7 +692,6 @@
 // ============================================================
 const HC_DATA = [
   { name: 'NWU Rugby',  count: 24 },
-  { name: 'Prodigal',   count: 21 },
   { name: 'Hombre',     count: 15 },
   { name: 'Oakbridge 1',count: 13 },
   { name: 'Overs',      count: 12 },
