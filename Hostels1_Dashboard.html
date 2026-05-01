@@ -8,17 +8,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #f2f4f8;
-    --surface: #ffffff;
-    --surface2: #edf0f5;
-    --border: #d8dce8;
-    --accent: #c8920d;
-    --accent2: #3a6de8;
-    --accent3: #1fa86e;
-    --accent4: #d43f3f;
-    --text: #111827;
-    --text-muted: #4b5a6e;
-    --text-dim: #8a97ab;
+    --bg: #0d0f14;
+    --surface: #161923;
+    --surface2: #1e2430;
+    --border: #2a3244;
+    --accent: #e8b04b;
+    --accent2: #5b8fff;
+    --accent3: #4ecb8d;
+    --accent4: #f06b6b;
+    --text: #e8eaf0;
+    --text-muted: #7a8499;
+    --text-dim: #4a5568;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -31,9 +31,8 @@
   }
   /* ---- HEADER ---- */
   .header {
-    background: #ffffff;
+    background: linear-gradient(135deg, #0d0f14 0%, #161923 50%, #1a1f2e 100%);
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     padding: 0 40px;
     position: sticky;
     top: 0;
@@ -115,10 +114,9 @@
     padding: 20px 22px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    transition: transform 0.2s, border-color 0.2s;
   }
-  .kpi-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.10); }
+  .kpi-card:hover { transform: translateY(-2px); border-color: var(--accent); }
   .kpi-card::before {
     content: '';
     position: absolute;
@@ -173,7 +171,6 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
   .card-title {
     font-size: 11px;
@@ -269,10 +266,10 @@
     font-weight: 600;
     letter-spacing: 0.5px;
   }
-  .pill-green { background: #d4f5e5; color: var(--accent3); }
-  .pill-blue { background: #dce8ff; color: var(--accent2); }
-  .pill-yellow { background: #fdefd0; color: var(--accent); }
-  .pill-red { background: #fde0e0; color: var(--accent4); }
+  .pill-green { background: rgba(78,203,141,0.15); color: var(--accent3); }
+  .pill-blue { background: rgba(91,143,255,0.15); color: var(--accent2); }
+  .pill-yellow { background: rgba(232,176,75,0.15); color: var(--accent); }
+  .pill-red { background: rgba(240,107,107,0.15); color: var(--accent4); }
   /* ---- MEMBER LIST ---- */
   .member-search {
     width: 100%;
@@ -316,8 +313,8 @@
   .goal-note { font-size: 11px; color: var(--text-dim); }
   /* ---- INSIGHT BOX ---- */
   .insight-box {
-    background: rgba(200,146,13,0.07);
-    border: 1px solid rgba(200,146,13,0.25);
+    background: rgba(232,176,75,0.06);
+    border: 1px solid rgba(232,176,75,0.2);
     border-radius: 8px;
     padding: 16px 20px;
     margin-top: 20px;
@@ -781,8 +778,8 @@ function makeDonut(id, labels, data, colors, legendId) {
 // ============================================================
 // CHART DEFAULTS
 // ============================================================
-Chart.defaults.color = '#4b5a6e';
-Chart.defaults.borderColor = '#d8dce8';
+Chart.defaults.color = '#7a8499';
+Chart.defaults.borderColor = '#2a3244';
 Chart.defaults.font.family = 'DM Sans';
 
 function lineChart(id, labels, datasets, opts = {}) {
@@ -795,8 +792,8 @@ function lineChart(id, labels, datasets, opts = {}) {
       interaction: { mode: 'index', intersect: false },
       plugins: { legend: { display: datasets.length > 1, position: 'top', labels: { boxWidth: 10, font: { size: 11 } } }, tooltip: { } },
       scales: {
-        x: { grid: { color: '#edf0f5' }, ticks: { font: { size: 10 } } },
-        y: { grid: { color: '#edf0f5' }, beginAtZero: true, ticks: { font: { size: 10 } } }
+        x: { grid: { color: '#1e2430' }, ticks: { font: { size: 10 } } },
+        y: { grid: { color: '#1e2430' }, beginAtZero: true, ticks: { font: { size: 10 } } }
       },
       ...opts
     }
