@@ -23,4 +23,7 @@ jobs:
             --data-binary @deploy.zip \
             "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID/deploys" \
             -o response.json
-          cat response.json
+          STATE=$(jq -r '.state' response.json)
+          ERROR=$(jq -r '.error_message // empty' response.json)
+          echo "State: $STATE"
+          if [ -n "$ERROR" ]; then echo "Error: $ERROR"; exit 1; fi
